@@ -20,6 +20,10 @@ public class CharacterController : MonoBehaviour
     public int tempDamage; // vervang deze later met fatsoenlijke OOP weapons en plant damage in weapon zelf!
     public bool isAttacking;
 
+    //spaghetti code temp
+    public bool hasTorch;
+    public GameObject torch;
+
     public bool canInteract;
     IShowText iText;
 
@@ -145,5 +149,7 @@ public class CharacterController : MonoBehaviour
         }
 
     }
+
+
 
 }
