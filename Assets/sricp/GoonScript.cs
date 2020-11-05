@@ -9,12 +9,14 @@ public class GoonScript : MonoBehaviour
     public Slider healthBar;
     public bool sliced;
     public GameObject playerObject;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         healthBar.maxValue = goonHealth;
         healthBar.value = goonHealth;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class GoonScript : MonoBehaviour
             Rigidbody r2 = Bottom.GetComponent<Rigidbody>();
             r2.isKinematic = false;
             r2.AddForce(Random.Range(-4,4), 0, 0, ForceMode.Impulse);
+            audioSource.Play();
         }
 
     }

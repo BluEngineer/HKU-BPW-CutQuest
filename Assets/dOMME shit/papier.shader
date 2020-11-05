@@ -7,6 +7,7 @@
 		_SpecColor("Specular Color", Color) = (0.5, 0.5, 0.5, 1)
 		_Shininess("Shininess", Range(0.03, 1)) = 0.078125
 
+
 			//_Thickness = Thickness texture (invert normals, bake AO).
 			//_Power = "Sharpness" of translucent glow.
 			//_Distortion = Subsurface distortion, shifts surface normal, effectively a refractive index.
@@ -19,7 +20,7 @@
 			_SubColor("Subsurface Color", Color) = (1.0, 1.0, 1.0, 1.0)
 	}
 		SubShader{
-			Tags { "RenderType" = "Opaque" }
+			Tags { "RenderType" = "cutout" }
 			LOD 200
 
 			CGPROGRAM

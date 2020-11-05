@@ -8,12 +8,14 @@ public class CaveEntrance : MonoBehaviour, IInteractable, IShowText
     public GameObject sliceText;
     Camera cam;
     public GameObject[] pieces = new GameObject[6];
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         sliceText = gameObject.transform.Find("canvas").gameObject.transform.Find("slicetext").gameObject;
         cam = Camera.main;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class CaveEntrance : MonoBehaviour, IInteractable, IShowText
         }
         gameObject.GetComponent<BoxCollider>().enabled = false;
         ShowText(false);
+        audioSource.Play();
     }
 
     public void ShowText(bool show)
