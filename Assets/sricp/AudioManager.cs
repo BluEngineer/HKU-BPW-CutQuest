@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
 
         audioSource = this.gameObject.GetComponent<AudioSource>();
 
-        AudioClip thisLevelMusic = music[SceneManager.GetActiveScene().buildIndex];
+        AudioClip thisLevelMusic = music[SceneManager.GetActiveScene().buildIndex] ;
         Debug.Log("playing" + thisLevelMusic);
 
         if (thisLevelMusic)
