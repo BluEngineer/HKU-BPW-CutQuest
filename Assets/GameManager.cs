@@ -5,7 +5,7 @@ public enum Mode { Play, Slice}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public PlaneUsageExample plane;
     public Mode mode
     {
         get { return mode; }
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     //alles voor in de slice mode
     void SliceModBehaviour()
     {
-        
-
+        curSliceable?.SliceSingleMesh(plane);
+        SetMode(Mode.Play);
     }
 }
