@@ -13,7 +13,6 @@ using EzySlice;
  */
 public class PlaneUsageExample : MonoBehaviour {
 
-
     private static PlaneUsageExample _instance;
 
     public static PlaneUsageExample Instance { get { return _instance; } }
@@ -42,6 +41,8 @@ public class PlaneUsageExample : MonoBehaviour {
 
 
 	}
+
+
 
 	#if UNITY_EDITOR
 	/**

@@ -25,7 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 997a7fb5a5a20a84494ddf1c8073bd03, type: 2}
     - target: {fileID: 1988265882, guid: 342e3b70b5308e4448170300f697f230, type: 3}
       propertyPath: m_Name
-      value: Sliceable Tree (6)
+      value: Sliceable Tree (6) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988265884, guid: 342e3b70b5308e4448170300f697f230, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1988265885, guid: 342e3b70b5308e4448170300f697f230, type: 3}
       propertyPath: m_LocalPosition.x

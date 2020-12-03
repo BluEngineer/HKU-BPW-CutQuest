@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cakeslice.outline-effect": {
+      "version": "https://github.com/cakeslice/Outline-Effect.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "818533d3892ce52baceeadf7f746d1afb472d417"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
