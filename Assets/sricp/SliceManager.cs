@@ -44,8 +44,13 @@ public class SliceManager : MonoBehaviour
                 slicePlane.gameObject.transform.position = hit.point;
                 hitObject = hit.collider.gameObject;
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                ISliceable sliceable = hitObject.GetComponent<ISliceable>();
-                sliceable?.SliceSingleMesh(slicePlane);
+                var sliceable = hitObject.GetComponent<ISliceable>();
+
+                //ik cache hier het sliceable object zodat we hem later kunnen aanpassen
+                GameManager.instance.curSliceable = hitObject.GetComponent<DefaultSliceable>();
+                //set mode naar slice mode
+                GameManager.instance.SetMode(Mode.Slice);
+                //sliceable?.SliceSingleMesh(slicePlane);
 
                 //SliceObjectRecursive(slicePlane, hitObject, crossMat);
                 
