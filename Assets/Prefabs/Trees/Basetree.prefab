@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3365af9e9c223a4a95d461093f39c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossMat: {fileID: 2100000, guid: 3002a593971a7d54597cdf9beefc09e0, type: 2}
-  cutOutline: {fileID: 0}
+  crossMat: {fileID: 2100000, guid: f7d42aaa2dc897f4ebfc0d0dffe999d6, type: 2}
+  hullMass: 2
+  sliceForce: {x: -2, y: 2}
 --- !u!114 &8429314267016399226
 MonoBehaviour:
   m_ObjectHideFlags: 0

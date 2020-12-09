@@ -15,8 +15,9 @@ public class UpperSliceable : DefaultSliceable
             DefaultSliceable xSliceable = x.AddComponent<DefaultSliceable>();
             xSliceable.crossMat = crossMat;
             coll1.convex = true;
-            body1.AddForce(new Vector3(0, 1f, Random.Range(-2, 2)), ForceMode.Impulse);
-     
+            body1.AddForce(new Vector3(0, 1f, Random.Range(sliceForce.x, sliceForce.y)), ForceMode.Impulse);
+            body1.mass = hullMass;
+
             MeshCollider coll2 = y.AddComponent<MeshCollider>();
             UpperSliceable ySliceable = y.AddComponent<UpperSliceable>();
             ySliceable.crossMat = crossMat;

@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private CharacterController characterController;
     public CameraFollow camHolder;
 
+    public AudioSource audioSource;
+    public AudioClip sliceSound;
+
     //slice stuff
     public DefaultSliceable curSliceable;
     public GameObject selectedObject;
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
     public LineRenderer cutLine;
     public PlaneUsageExample slicePlane;
     public Material crossMat;
+
+    public GameObject schaarIcoon;
     private RaycastHit raycastHit;
 
     private Vector3 sliceDir;
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
         }
         player = GameObject.Find("Player");
         characterController = player.GetComponent<CharacterController>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+
     }
     void Start()
     {
@@ -75,13 +82,17 @@ public class GameManager : MonoBehaviour
                 selectedSliceable.GetComponent<cakeslice.Outline>().eraseRenderer = true;
                 camHolder.target = player.transform;
                 cutLine.enabled = false;
+                mousePresses = 0;
+                schaarIcoon.SetActive(false);
                 //initialize once something
                 break;
+
             case Mode.Slice:
                 //initialize once something
                 characterController.enabled = false;
                 selectedSliceable.GetComponent<cakeslice.Outline>().eraseRenderer = false;
                 camHolder.target = selectedObject.transform;
+                schaarIcoon.SetActive(true);
                 break;
         
         }
@@ -124,9 +135,12 @@ public class GameManager : MonoBehaviour
     //alles voor in de slice mode
     void SliceModBehaviour()
     {
+        schaarIcoon.transform.position = Input.mousePosition;
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             SetMode(Mode.Play);
+            
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -175,6 +189,7 @@ public class GameManager : MonoBehaviour
                 sliceDir = (cutLine.GetPosition(0) - cutLine.GetPosition(1)).normalized;
                 slicePlane.transform.rotation = Quaternion.LookRotation(sliceDir);
                 selectedSliceable.GetComponent<ISliceable>()?.SliceSingleMesh(slicePlane);
+                audioSource.PlayOneShot(sliceSound);
 
                 SetMode(Mode.Play);
 
