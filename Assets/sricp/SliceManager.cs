@@ -9,6 +9,10 @@ public class SliceManager : MonoBehaviour
     public PlaneUsageExample slicePlane;
     public Material crossMat;
 
+    public LineRenderer cutLine;
+    public int mousePresses;
+    private RaycastHit hitPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,19 +45,45 @@ public class SliceManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
+                hitPoint = hit;
                 slicePlane.gameObject.transform.position = hit.point;
                 hitObject = hit.collider.gameObject;
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                 var sliceable = hitObject.GetComponent<ISliceable>();
-
                 //ik cache hier het sliceable object zodat we hem later kunnen aanpassen
                 GameManager.instance.curSliceable = hitObject.GetComponent<DefaultSliceable>();
                 //set mode naar slice mode
                 GameManager.instance.SetMode(Mode.Slice);
                 //sliceable?.SliceSingleMesh(slicePlane);
-
                 //SliceObjectRecursive(slicePlane, hitObject, crossMat);
-                
+
+
+                if (mousePresses == 0)
+                {
+                    //do your stuff for first time
+                    mousePresses++;
+                    cutLine.enabled = false;
+                    cutLine.SetPosition(0, hit.point);
+                }
+                else
+                {
+                    //do your stuff for all other times
+                    cutLine.enabled = true;
+                    cutLine.SetPosition(1, hit.point);
+                    mousePresses = 0;
+                }
+            }
+
+            if (mousePresses == 0)
+            {
+                //do your stuff for first time
+                //cutLine.SetPosition(0, hitPoint.point);
+            }
+            else
+            {
+                //do your stuff for all other times
+                //cutLine.SetPosition(1, hitPoint.point);
+
             }
         }
     }
