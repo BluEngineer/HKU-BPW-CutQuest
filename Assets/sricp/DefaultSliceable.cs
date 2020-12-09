@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 
+[RequireComponent(typeof(cakeslice.Outline))]
 public class DefaultSliceable : MonoBehaviour, ISliceable
 {
     public Material crossMat;
+    public cakeslice.Outline cutOutline;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        cutOutline = gameObject.GetComponent<cakeslice.Outline>();
+        cutOutline.eraseRenderer = true;
     }
 
     public virtual void SliceSingleMesh( PlaneUsageExample slicePlane)
