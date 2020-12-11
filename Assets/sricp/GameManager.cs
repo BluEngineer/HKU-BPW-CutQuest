@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private Vector3 sliceDir;
 
-    private float lineOffset = 0.5f;
+    private float lineOffset = 0;
 
     void Awake()
     {
@@ -187,8 +187,11 @@ public class GameManager : MonoBehaviour
 
                 //align sliceplane rotation to slice line direction:
                 sliceDir = (cutLine.GetPosition(0) - cutLine.GetPosition(1)).normalized;
+
                 slicePlane.transform.rotation = Quaternion.LookRotation(sliceDir);
+
                 selectedSliceable.GetComponent<ISliceable>()?.SliceSingleMesh(slicePlane);
+
                 audioSource.PlayOneShot(sliceSound);
 
                 SetMode(Mode.Play);

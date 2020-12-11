@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Dissolve
   m_Shader: {fileID: 4800000, guid: f91082cf413cad44eb9b3047268f9bcd, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _ALPHACLIPON_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -89,12 +89,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Bakedobject: 0
-    - _BorderThickness: 1.8
+    - _BorderThickness: 2.4
     - _BumpScale: 1
     - _Cosspeed: 0.526386
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0.25
+    - _DissolveAmount: 0.633
     - _DstBlend: 0
     - _Emissionmultiplier: 19.46
     - _GlossMapScale: 1
@@ -117,7 +117,7 @@ Material:
     - _UVSec: 0
     - _WorldSpaceDissolve: 0
     - _ZWrite: 1
-    - _alphaclipon: 0
+    - _alphaclipon: 1
     - _cosnoiseoffset: 0.6151989
     - _highlightfresnelsize: 3
     - _highlightfresnelspeed: 0.6583972
@@ -126,7 +126,7 @@ Material:
     - _sinspeed: 0.7790809
     - _triplanardissolvemode: 0
     m_Colors:
-    - _BorderColor: {r: 0, g: 7.999999, b: 7.5110884, a: 1}
+    - _BorderColor: {r: 0, g: 3.9999995, b: 3.769633, a: 1}
     - _Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Highlightfresnelcolor: {r: 0, g: 0.7931032, b: 1, a: 1}
