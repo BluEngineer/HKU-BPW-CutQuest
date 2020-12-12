@@ -8,7 +8,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    private List<Item> items;
+    [SerializeField]
+    public List<Item> items;
     public float maximumWeight = 10.0f;
     public float totalWeight;
 
@@ -36,7 +37,7 @@ public class Inventory : MonoBehaviour
         else
         {
             items.Add(item);
-            //InventoryUI.instance.Add(item);
+            InventoryUI.instance.Add(item);
             totalWeight += item.weight;
             return true;
         }
@@ -46,7 +47,7 @@ public class Inventory : MonoBehaviour
     {
         if (items.Remove(item))
         {
-           // InventoryUI.instance.Remove(item);
+            InventoryUI.instance.Remove(item);
             totalWeight -= item.weight;
         }
     }

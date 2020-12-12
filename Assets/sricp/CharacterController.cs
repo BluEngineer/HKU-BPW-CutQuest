@@ -59,7 +59,6 @@ public class CharacterController : MonoBehaviour
         float DisstanceToTheGround = GetComponent<Collider>().bounds.extents.y;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, DisstanceToTheGround + 0.1f);
 
-
         if (Input.GetKeyDown("space") && isGrounded)
         {
             //rigidBody.AddForce(new Vector3(0, jumpPower, 0));
@@ -109,8 +108,8 @@ public class CharacterController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Interactable"))
         {
-            iText = other.gameObject.GetComponent<IShowText>();
-            iText.ShowText(true);
+            //iText = other.gameObject.GetComponent<IShowText>();
+            //iText.ShowText(true);
         }
     }
 
@@ -131,7 +130,7 @@ public class CharacterController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Interactable"))
         {
-            iText.ShowText(false);
+            //iText.ShowText(false);
         }
 
     }

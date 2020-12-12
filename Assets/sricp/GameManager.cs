@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum Mode { Play, Slice}
+public enum Mode { Play, Slice, Inventory}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        SetMode(Mode.Play);   
+        SetMode(Mode.Play);
     }
 
     void Update()
@@ -62,17 +62,24 @@ public class GameManager : MonoBehaviour
                 PlayModeBehaviour();
 
                 break;
+
             case Mode.Slice:
                 SliceModBehaviour();
 
                 break;
 
+            case Mode.Inventory:
+                InventoryModeBehaviour();
+
+                break;
+
+
         }
     }
-      //set mode wisselt de modes en kan een keer nieuwe waardes op elke wissel initialiseren
+    //set mode wisselt de modes en kan een keer nieuwe waardes op elke wissel initialiseren
     public void SetMode(Mode m)
-	{
-		mode = m;
+    {
+        mode = m;
         switch (mode)
         {
             //initial state switch, executes once.
@@ -84,6 +91,7 @@ public class GameManager : MonoBehaviour
                 cutLine.enabled = false;
                 mousePresses = 0;
                 schaarIcoon.SetActive(false);
+                InventoryUI.instance.gameObject.SetActive(false);
                 //initialize once something
                 break;
 
@@ -93,8 +101,17 @@ public class GameManager : MonoBehaviour
                 selectedSliceable.GetComponent<cakeslice.Outline>().eraseRenderer = false;
                 camHolder.target = selectedObject.transform;
                 schaarIcoon.SetActive(true);
+                InventoryUI.instance.gameObject.SetActive(false);
                 break;
-        
+
+            case Mode.Inventory:
+                InventoryUI.instance.gameObject.SetActive(true);
+
+
+                break;
+                //initialize inventory
+
+
         }
 
     }
@@ -102,6 +119,11 @@ public class GameManager : MonoBehaviour
     //alles voor in de play mode
     void PlayModeBehaviour()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SetMode(Mode.Inventory);
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -132,15 +154,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     //alles voor in de slice mode
     void SliceModBehaviour()
     {
         schaarIcoon.transform.position = Input.mousePosition;
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SetMode(Mode.Play);
-            
+
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -199,7 +223,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(mousePresses != 0)
+        if (mousePresses != 0)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -212,4 +236,14 @@ public class GameManager : MonoBehaviour
         //curSliceable?.SliceSingleMesh(plane);
         //SetMode(Mode.Play);
     }
+
+    void InventoryModeBehaviour()
+    {
+        Debug.Log("inventory mode");
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SetMode(Mode.Play);
+        }
+    }
+
 }
